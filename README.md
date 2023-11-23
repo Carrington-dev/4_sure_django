@@ -23,7 +23,7 @@ clone this repository
 ```bash
 
 git clone git_url
-cd git_project/expertproj
+cd git_project/app
 ```
 
 ### Step 2: Install dependencies
