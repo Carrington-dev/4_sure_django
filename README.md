@@ -51,4 +51,7 @@ Dockerfile will match the container's port with your port
 
 docker-compose up -d --build
 
+
+docker-compose exec web python manage.py createsuperuser
+
 ```
