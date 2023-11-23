@@ -47,11 +47,56 @@ python manage.py runserver 0.0.0.0:8000
 
 Dockerfile will match the container's port with your port
 
-```Docker
+__build a container and run the application__
 
+```bash
 docker-compose up -d --build
-
-
+```
+run commands inside a container
+```bash
 docker-compose exec web python manage.py createsuperuser
+```
 
+## Endpoints
+
+view our endpoints
+
+```
+/ # to view all users in the system
+/register # to register and view clowns
+/clients # to make or create appointments for clients
+/login # to login as per FLask given example not a django standard
+/clowns # to view clowns
+/appointments # to view appointments only
+/create_appointments # to create and view appointments
+```
+
+### Swagger
+
+swagger is not activated but can easily be activated on just a click to show all endpoints
+
+```bash
+pip install django-rest-swagger
+```
+
+__settings.py__
+```python
+
+INSTALLED_APPS = [
+    ...
+    'rest_framework_swagger',
+    ...
+    
+]
+```
+__configure__
+```python
+from django.conf.urls import url
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='Pastebin API')
+
+urlpatterns = [
+    url(r'^$', schema_view)
+]
 ```
