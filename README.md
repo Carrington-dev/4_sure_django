@@ -8,7 +8,7 @@
     client/ # application
     clown/ # application
     troupe/ # application
-    expertproj/ # application
+    expertproj/ # project directory
     manage.py # 
 
 ```
@@ -45,7 +45,10 @@ python manage.py runserver 0.0.0.0:8000
 
 ## Running the project using docker compose
 
+Dockerfile will match the container's port with your port
+
 ```Docker
 
-docker build # to addd more
+docker-compose up -d --build
+
 ```

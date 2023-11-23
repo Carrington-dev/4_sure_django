@@ -1,3 +1,4 @@
+import json
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from rest_framework.response import Response
@@ -24,19 +25,28 @@ class UserCreateViewSet(UserMixin):
 #     queryset = User.objects.all()
 
 
+# @api_view(['GET', 'POST'])
+# def login(request):
+
+#     data = JSONParser().parse(request)
+#     print(data)
+#     serializer = UserModelSerializer(data=data)
+
+#     user = get_object_or_404(User, email=data.get('email'))
+
+#     print(user.check_password(data.get('password')))
+#     if user.check_password(data.get('password')):
+#         return Response({'message': 'Login successful', "data": data})
+    
+#         # return JsonResponse(serializer.data, status=201)
+#     if serializer.is_valid():
+#         return Response(serializer.data, status=400)
+#     return Response({"message": "Not logged in"})
+
 @api_view(['GET', 'POST'])
 def login(request):
-    data = JSONParser().parse(request)
-    print(data)
-    serializer = UserModelSerializer(data=data)
-
-    user = get_object_or_404(User, email=data.get('email'))
-
-    print(user.check_password(data.get('password')))
-    if user.check_password(data.get('password')):
-        return Response({'message': 'Login successful', "data": data})
-    
-        # return JsonResponse(serializer.data, status=201)
-    if serializer.is_valid():
-        return Response(serializer.data, status=400)
-    return Response({"message": "Not logged in"})
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        print(data)
+        return JsonResponse({"message": "Not logged in", **data})
+    return JsonResponse({"message": "Not logged in"})
