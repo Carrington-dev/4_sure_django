@@ -9,7 +9,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('register', authenicate_service.UserCreateViewSet, basename="register")
 router.register('clients', client_service.ClientViewSet, basename="client")
-router.register('troupes', troupe_service.AppointmentViewSet, basename="troupe")
+router.register('create_appointments', troupe_service.AppointmentViewSet, basename="create_appointment")
 router.register('clowns', client_service.ClientViewSet, basename="clown")
 
 urlpatterns = [
