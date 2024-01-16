@@ -56,6 +56,10 @@ run commands inside a container
 ```bash
 docker-compose exec web python manage.py createsuperuser
 ```
+or in docker only
+```
+docker exec web python manage.py createsuperuser
+```
 
 ## Endpoints
 
